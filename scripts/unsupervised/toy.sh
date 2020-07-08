@@ -1,0 +1,22 @@
+train_url=${0%%.sh}
+train_url=${train_url:21}
+python main_moco.py \
+--moxing=false \
+--train_url=../${train_url} \
+--data_dir=/mnt/imagenet2012 \
+--moco_dim=128 \
+--moco_k=66560 \
+--moco_m=0.999 \
+--moco_t=0.2 \
+--mlp=true \
+--aug_plus=true \
+--decay_method=cos \
+--init_lr=0.03 \
+--batch_size=256 \
+--num_workers=64 \
+--end_epoch=200 \
+--dist=true \
+--nodes_num=1 \
+--node_rank=0 \
+# --master_addr=10.0.9.145 \
+# --resume=true \
